@@ -1,9 +1,9 @@
 const express = require('express');
 const path= require('path');
 const app= express();
-const cors= require('cors')
+const cors= require('cors');
 const pool= require('./db');
-const nodemailer= require('nodemailer')
+const nodemailer= require('nodemailer');
 const port= process.env.PORT||5001
 
 
@@ -132,4 +132,4 @@ console.log(err.message);
 
 })
 
-app.listen(PORT, ()=>{console.log(`running on ${PORT}`)});
+app.listen(PORT, ()=>{console.log(`running on ${port}`)});
