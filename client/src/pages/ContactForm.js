@@ -25,7 +25,7 @@ const ContactForm=()=>{
   
 
   const addMessage=()=>{
-    axios.post("http://localhost:5001/sendmail", {
+    axios.post("/sendmail", {
       name:name,
       lastname:lastName,
       email:email,
@@ -40,7 +40,7 @@ const ContactForm=()=>{
   }
 
   const sendEmail=()=>{
-    axios.post("http://localhost:5001/nodemailer", {
+    axios.post("/nodemailer", {
       name:name,
       lastname:lastName,
       email:email,

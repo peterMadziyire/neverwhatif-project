@@ -16,7 +16,7 @@ function Messages() {
 
   const getMessages=()=>{
 
-    axios.get("http://localhost:5001/mailbox").
+    axios.get("/mailbox").
     then((response)=>{console.log(response.data); return response.data}).
     then((data)=>setMessages(data));
   }
@@ -24,7 +24,7 @@ function Messages() {
       //delete function
       const deleteMessage=(id)=>{
 
-        axios.delete(`http://localhost:5001/delete/${id}`).then(()=>{
+        axios.delete(`/delete/${id}`).then(()=>{
         setMessages(messages.filter((message)=> message.id!==id))
 
         })

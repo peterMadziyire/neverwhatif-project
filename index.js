@@ -1,14 +1,18 @@
 const express = require('express');
-
+const path= require('path');
 const app= express();
 const cors= require('cors')
 const pool= require('./db');
 const nodemailer= require('nodemailer')
+const port= process.env.PORT||5001
 
 
 //middleware
 app.use(cors());
 app.use(express.json())
+
+
+app.use(express.static(path.join(__dirname, 'client/build')));
 
 //ROUTES
 
@@ -98,6 +102,11 @@ app.post("/nodemailer", async (req,res)=>{
 
 })
 
+app.get("*", (req, res)=>{
+ 
+  res.sendFile(path.join(__dirname, "client/build/index.html"))
+})
+
 //create a message
 
 app.post("/sendmail", async (req, res)=>{
@@ -123,4 +132,4 @@ console.log(err.message);
 
 })
 
-app.listen(5001, ()=>{console.log("running on 5001")});
+app.listen(PORT, ()=>{console.log(`running on ${PORT}`)});
