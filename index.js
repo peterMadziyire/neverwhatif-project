@@ -4,8 +4,8 @@ const app= express();
 const cors= require('cors');
 const pool= require('./db');
 const nodemailer= require('nodemailer');
-const port= process.env.PORT||5001
-
+const port= process.env.PORT||5001;
+require('dotenv').config();
 
 //middleware
 app.use(cors());
