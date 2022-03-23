@@ -1,15 +1,18 @@
-const express = require('express');
-const path= require('path');
-const app= express();
-const cors= require('cors');
-const pool= require('./db');
 const nodemailer= require('nodemailer');
-const port= process.env.PORT||5001;
+const express = require('express');
+const app = express();
+const cors= require('cors');
+const path= require('path');
+const pool= require('./db');
 require('dotenv').config();
+const port= process.env.PORT||5001
+
 
 //middleware
 app.use(cors());
 app.use(express.json())
+
+// app.use(express.static(path.join(__dirname, 'client/build')));
 
 if (process.env.NODE_ENV==='production') {
 
@@ -19,6 +22,26 @@ app.use(express.static(path.join(__dirname, 'client/build')));
 //ROUTES
 
 //get all messages
+
+app.get('/', async (req,res)=>{
+
+
+
+  try {
+    
+      const allMessages= await pool.query("SELECT * FROM nwimessages");
+      res.json(allMessages.rows)
+ 
+
+
+      console.log("hello Daddy")
+  } catch (error) {
+      error.message
+  }
+
+
+  
+})
 
 app.get('/mailbox', async (req,res)=>{
 

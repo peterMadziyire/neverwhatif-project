@@ -46,7 +46,7 @@ const ContactForm=()=>{
       email:email,
       subject:subject,
       message:message,
-      time:time})
+      time:time}).catch((error)=> console.log(error.message))
     };
 
   

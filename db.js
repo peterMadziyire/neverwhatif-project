@@ -10,7 +10,11 @@ const devConfig= {
     port: process.env.PG_PORT,
     database: process.env.PG_DATABASE
 
- 
+    // user: "postgres",
+    // password: "password",
+    // host: "localhost",
+    // port: 5432,
+    // database: "messages"
   
 
 }
@@ -24,5 +28,7 @@ const proConfig = {
 }
 
 const pool= new Pool(process.env.NODE_ENV==="production" ? proConfig : devConfig);
+
+// const pool= new Pool(devConfig);
 
 module.exports= pool;
