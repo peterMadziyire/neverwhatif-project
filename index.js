@@ -52,6 +52,8 @@ app.get('/mailbox', async (req,res)=>{
         res.json(allMessages.rows)
     } catch (error) {
         error.message
+
+        console.log("does not exist")
     }
 
 
