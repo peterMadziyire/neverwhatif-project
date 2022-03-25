@@ -2,11 +2,7 @@
   "name": "neverwhatif-project",
   "version": "0.1.0",
   "private": true,
-  "root": "build/client",
-  "clean_urls": false,
-  "routes": {
-    "/**": "index.html"
-  },
+
   "dependencies": {
     "@emailjs/browser": "^3.4.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.0",

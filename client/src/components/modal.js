@@ -21,7 +21,7 @@ export default function OpenModal({name,lastname,email,subject,message,time,setM
 
      //delete function
      const modalDelete=(id)=>{
-      axios.delete(`/delete/${id}`).then(()=>{
+      axios.delete(`/delete${id}`).then(()=>{
         setMessages(messages.filter((message)=> message.id!==id))
       handleClose();
       })

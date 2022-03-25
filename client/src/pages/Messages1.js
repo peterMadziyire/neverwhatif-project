@@ -24,7 +24,7 @@ function Messages() {
       //delete function
       const deleteMessage=(id)=>{
 
-        axios.delete(`http://localhost:5001/delete/${id}`).then(()=>{
+        axios.delete(`/delete/${id}`).then(()=>{
         setMessages(messages.filter((message)=> message.id!==id))
 
         })
