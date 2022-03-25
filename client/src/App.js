@@ -37,7 +37,7 @@ function App() {
       <Outlet />
       <Routes>
       <Route path="/" element={<ContactForm/>}></Route>
-      <Route path="/Messages" element={<Messages/>}></Route>
+      <Route path="/messages" element={<Messages/>}></Route>
       </Routes>
       
     </div></Router>

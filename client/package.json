@@ -2,6 +2,11 @@
   "name": "neverwhatif-project",
   "version": "0.1.0",
   "private": true,
+  "root": "build/client",
+  "clean_urls": false,
+  "routes": {
+    "/**": "index.html"
+  },
   "dependencies": {
     "@emailjs/browser": "^3.4.0",
     "@fortawesome/fontawesome-svg-core": "^6.1.0",
@@ -20,6 +25,10 @@
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.4"
   },
+
+
+
+
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -44,5 +53,11 @@
       "last 1 safari version"
     ]
   },
+  
   "proxy": "http://localhost:5001"
+ 
+
+
 }
+
+ 
