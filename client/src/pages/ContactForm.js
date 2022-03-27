@@ -24,14 +24,14 @@ const ContactForm=()=>{
   
 
   const addMessage=()=>{
-    axios.post("/sendmail", {
+    axios.post("sendmail", {
       name:name,
       lastname:lastName,
       email:email,
       subject:subject,
       message:message,
       time:time}).then((response)=>{console.log(response)
-        ;}).then.catch((error) => {
+        ;}).then(()=>{sendEmail()}).catch((error) => {
         // here you will have access to error.response
         console.log(error.response)
     });
@@ -39,7 +39,7 @@ const ContactForm=()=>{
   }
 
   const sendEmail=()=>{
-    axios.post("/nodemailer", {
+    axios.post("nodemailer", {
       name:name,
       lastname:lastName,
       email:email,
@@ -113,7 +113,7 @@ const ContactForm=()=>{
 
   const getMessages=()=>{
 
-    axios.get("/mailbox").
+    axios.get("mailbox").
     then((response)=>{console.log(response.data); return response.data}).
     then((data)=>setMessages(data));
   }
@@ -121,7 +121,7 @@ const ContactForm=()=>{
       //delete function
       const deleteMessage=(id)=>{
 
-        axios.delete(`/delete/${id}`).then(()=>{
+        axios.delete(`delete/${id}`).then(()=>{
         setMessages(messages.filter((message)=> message.id!==id))
 
         })
