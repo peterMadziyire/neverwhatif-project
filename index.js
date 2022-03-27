@@ -99,7 +99,7 @@ app.delete('/delete/:id', async(req,res)=>{
 //         service: 'gmail',
 //         auth: {
 //           user: 'afromaestrokidd@gmail.com',
-//           pass: "qwerty24--"
+//           pass: "q24--"
 //         }
 //       });
     
