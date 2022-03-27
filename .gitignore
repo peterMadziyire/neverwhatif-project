@@ -2,7 +2,7 @@
 /server/.env
 /server/test6.env
 .env
-/node_modules
+node_modules
 test.env
 test2.env
 test3.env
