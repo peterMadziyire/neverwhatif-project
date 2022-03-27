@@ -1,9 +1,10 @@
 import React from 'react';
-import { useState, useEffect} from 'react';
+import { useState } from 'react';
 import Container from 'react-bootstrap/Container';
 import axios from 'axios';
 import { Form, Col, Row, InputGroup, Button } from 'react-bootstrap';
-import OpenModal from '../components/modal';
+
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faEnvelope, faMinus, faTrashCan, } from '@fortawesome/free-solid-svg-icons';
 import moment from 'moment';
@@ -24,7 +25,7 @@ const ContactForm=()=>{
   
 
   const addMessage=()=>{
-    axios.post("sendmail", {
+    axios.post("/sendmail", {
       name:name,
       lastname:lastName,
       email:email,
@@ -39,7 +40,7 @@ const ContactForm=()=>{
   }
 
   const sendEmail=()=>{
-    axios.post("nodemailer", {
+    axios.post("/nodemailer", {
       name:name,
       lastname:lastName,
       email:email,
@@ -108,36 +109,9 @@ const ContactForm=()=>{
     console.log(time)
   };
 
-  const [messages, setMessages]=useState([]);
-  const [Loaded, setLoaded]= useState(false);
-
-  const getMessages=()=>{
-
-    axios.get("mailbox").
-    then((response)=>{console.log(response.data); return response.data}).
-    then((data)=>setMessages(data));
-  }
-
-      //delete function
-      const deleteMessage=(id)=>{
-
-        axios.delete(`delete/${id}`).then(()=>{
-        setMessages(messages.filter((message)=> message.id!==id))
-
-        })
-
-    }
-
-
-  useEffect(()=>{
-getMessages()
-
-  },[])
-
   return (
-    <div className="div">
     <div className="container col-lg-8 col-m-8 col-xl-6 text-start">
-    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+    <Form noValidate validated={validated} onSubmit={handleSubmit} className="mb-3">
       <Row className="mb-3">
         <Form.Group as={Col} md="6" controlId="validationCustom01">
           <Form.Label>First name</Form.Label>
@@ -214,39 +188,6 @@ getMessages()
       {!name||!lastName||!email||!message||!subject?<Button type="submit" disabled>Submit form</Button>:<Button type="submit">Submit form</Button>}
       
     </Form></div>
-    <div className="container">{!messages? <div>"Loading"</div>:
-     messages.map((message)=>{
-       return <div key={message.id} className="row border border-1 mx-auto">
-        <div className="row mx-auto">
-          
-          <div className="col-10  p-2 name text-primary text-start"><a>{message.name} {message.lastname}  </a><FontAwesomeIcon icon={faEnvelope} /></div>
-          <div className="col-2 p-2 delete text-end"><FontAwesomeIcon className="pointer" icon={faTrashCan} onClick={()=>{deleteMessage(message.id)}}/></div>
-          
-        </div> 
-      <div className="row mx-auto">
-        <div className="d-flex text-start align-items-center justify-content-start subject col-xs-12 col-sm-12 col-m-9 col-lg-9 col-xl-9 p-2"> 
-            <div className="fs-4 fw-light text-nowrap overflow-hidden text-secondary">{message.subject} </div>
-            
-            <div className='ms-2'><OpenModal
-            name={message.name}
-            lastname= {message.lastname}
-            email={message.email}
-            subject={message.subject}
-            message={message.message}
-            time= {message.time}
-            setMessages={setMessages}
-            messages={messages}
-            id={message.id}
-            /></div>
-            
-          
-        </div> 
-        <div className="d-flex justify-content-end p-2 align-items-center time col-xs-12 col-sm-12 col-m-3 col-lg-3 col-xl-3"><div className="span-time"> {moment(new Date(message.time)).calendar() } </div></div>
-      </div>
-      </div> }) }
-      </div>
-    
-    </div>
   );
 }
 
