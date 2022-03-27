@@ -89,45 +89,45 @@ app.delete('/delete/:id', async(req,res)=>{
     
     })
 
-app.post("/nodemailer", async (req,res)=>{
+// app.post("/nodemailer", async (req,res)=>{
 
-    try {
-        console.log(req.body)
-    const {name, lastname, email, subject, message,  time}=req.body;
+//     try {
+//         console.log(req.body)
+//     const {name, lastname, email, subject, message,  time}=req.body;
 
-    var transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: 'afromaestrokidd@gmail.com',
-          pass: "qwerty24--"
-        }
-      });
+//     var transporter = nodemailer.createTransport({
+//         service: 'gmail',
+//         auth: {
+//           user: 'afromaestrokidd@gmail.com',
+//           pass: "qwerty24--"
+//         }
+//       });
     
 
-      var mailOptions = {
-        from: 'afromaestrokidd@gmail.com',
-        to: email,
-        subject: subject,
-        text: 'Thank you, we have received your email'
-      };
+//       var mailOptions = {
+//         from: 'afromaestrokidd@gmail.com',
+//         to: email,
+//         subject: subject,
+//         text: 'Thank you, we have received your email'
+//       };
       
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      });
+//       transporter.sendMail(mailOptions, function(error, info){
+//         if (error) {
+//           console.log(error);
+//         } else {
+//           console.log('Email sent: ' + info.response);
+//         }
+//       });
 
 
-    } catch (error) {
-        console.log(error.message);
-    }
+//     } catch (error) {
+//         console.log(error.message);
+//     }
     
 
 
 
-})
+// })
 
 app.get("*", (req, res)=>{
  

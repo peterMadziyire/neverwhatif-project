@@ -31,7 +31,7 @@ const ContactForm=()=>{
       subject:subject,
       message:message,
       time:time}).then((response)=>{console.log(response)
-        ;}).then(()=>{sendEmail()}).catch((error) => {
+        ;}).then.catch((error) => {
         // here you will have access to error.response
         console.log(error.response)
     });
