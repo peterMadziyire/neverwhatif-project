@@ -98,8 +98,8 @@ app.post("/nodemailer", async (req,res)=>{
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'afromaestrokidd@gmail.com',
-          pass: "q24--"
+          user: process.env.MY_EMAIL,
+          pass: process.env.MY_PASS
         }
       });
     
